@@ -3,10 +3,12 @@ for(var i=0; i<7; i++){
     document.querySelectorAll("button")[i].addEventListener("click",function(){
     var value=this.innerHTML;
     sound(value);
+    animation(value);
 });
 
 document.addEventListener("keypress",function(event){
     sound(event.key);
+    animation(event.key);
 });
 
     function sound(key){
@@ -43,6 +45,13 @@ document.addEventListener("keypress",function(event){
         
             default:
                 break;
+            }
         }
-    }
+    }   
+function animation(active){
+    var button=document.querySelector("." + active);
+    button.classList.add("pressed");
+    setTimeout(function(){
+        button.classList.remove("pressed")
+    },100);
 }
